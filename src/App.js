@@ -1,13 +1,16 @@
 import "./App.less";
 
-import { Layout, Col, Divider, Row, Card } from "antd";
+import { Layout, Col, Divider, Row, Card, Image } from "antd";
 const { Header, Content } = Layout;
 
 const App = () => {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header>
-        <h1>FLAT</h1>
+        <Image
+          height={24}
+          src="https://flat.fruchtlabor.com/assets/img/illustrations/flatlogoschriftwhite.png"
+        />
       </Header>
       <Content>
         <Divider orientation="left" style={{ borderColor: "#949494" }}>
