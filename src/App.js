@@ -10,7 +10,9 @@ const App = () => {
         <h1>FLAT</h1>
       </Header>
       <Content>
-        <Divider orientation="left">MemberArea</Divider>
+        <Divider orientation="left" style={{ borderColor: "#949494" }}>
+          MemberArea
+        </Divider>
         <Row>
           <Col className="gutter-row" span={8}>
             <Card
