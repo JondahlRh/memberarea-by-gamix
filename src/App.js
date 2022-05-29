@@ -9,6 +9,7 @@ const App = () => {
       <Header>
         <Image
           height={24}
+          preview={false}
           src="https://flat.fruchtlabor.com/assets/img/illustrations/flatlogoschriftwhite.png"
         />
       </Header>
