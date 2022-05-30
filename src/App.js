@@ -20,7 +20,7 @@ const App = () => {
         <Row>
           <Col className="gutter-row" span={8}>
             <Card
-              title="Card title"
+              title="Profil"
               bordered={false}
               style={{
                 width: "95%",
@@ -32,7 +32,7 @@ const App = () => {
           </Col>
           <Col className="gutter-row" span={8}>
             <Card
-              title="Card title"
+              title="Abmeldung"
               bordered={false}
               style={{
                 width: "95%",
@@ -44,7 +44,7 @@ const App = () => {
           </Col>
           <Col className="gutter-row" span={8}>
             <Card
-              title="Card title"
+              title="Feedback"
               bordered={false}
               style={{
                 width: "95%",
