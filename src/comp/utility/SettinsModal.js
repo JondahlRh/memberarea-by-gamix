@@ -1,6 +1,6 @@
-import { Modal, Form, Input, DatePicker, Select } from "antd";
+import { Modal, Form, Input, DatePicker } from "antd";
 
-const { Option } = Select;
+import CountrySelect from "./CountrySelecet";
 
 const SettingsModal = (props) => {
   return (
@@ -11,21 +11,14 @@ const SettingsModal = (props) => {
       onCancel={props.onCancel}
     >
       <Form layout={"vertical"}>
-        <Form.Item label="Benutzername">
+        <Form.Item label="Anzeigename">
           <Input />
         </Form.Item>
         <Form.Item label="Geburtsdatum">
           <DatePicker />
         </Form.Item>
         <Form.Item label="Bundesland">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Benutzername">
-          <Select>
-            <Option>NRW</Option>
-            <Option>BW</Option>
-            <Option>BY</Option>
-          </Select>
+          <CountrySelect />
         </Form.Item>
       </Form>
     </Modal>

@@ -1,7 +1,7 @@
 import "./App.less";
 
-import { Layout, Divider, Image } from "antd";
-import Profil from "./comp/Profil";
+import { Layout, Divider, Image, Row, Col } from "antd";
+import ProfileCard from "./comp/ProfileCard/ProfileCard";
 
 const { Header, Content } = Layout;
 
@@ -19,7 +19,11 @@ const App = () => {
         <Divider orientation="left" style={{ borderColor: "#949494" }}>
           MemberArea
         </Divider>
-        <Profil />
+        <Row align="center">
+          <Col span={8}>
+            <ProfileCard />
+          </Col>
+        </Row>
       </Content>
     </Layout>
   );
