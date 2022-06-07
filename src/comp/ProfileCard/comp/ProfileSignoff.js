@@ -2,6 +2,7 @@ import { Divider, List } from "antd";
 import { useState } from "react";
 import ListSignoff from "./Signoff/ListSignoff";
 import NewSignoff from "./Signoff/NewSignoff";
+import SignoffModal from "../../utility/SignoffModal";
 
 const DUMMY_ARRAY = [
   { id: "a1", start: "18.März.2022", end: "25.Juni.2022" },
@@ -10,12 +11,10 @@ const DUMMY_ARRAY = [
 
 const ProfileAbmeldung = () => {
   const [signoffList, setSignoffList] = useState(DUMMY_ARRAY);
+  const [modal, setModal] = useState(false);
 
   const AddSignoffHandler = () => {
-    setSignoffList([
-      ...signoffList,
-      { id: Math.random(), start: "test", end: "test2" },
-    ]);
+    setModal(true);
   };
 
   const RemoveSignoffHandler = (item) => {
@@ -29,6 +28,13 @@ const ProfileAbmeldung = () => {
     }
   };
 
+  const cancelHandler = () => {
+    setModal(false);
+  };
+
+  const text =
+    signoffList.length === 0 ? "Neue Abmeldung" : "Abmeldung hinzufügen";
+
   return (
     <div>
       <Divider orientation="left" style={{ borderColor: "#949494" }}>
@@ -36,8 +42,14 @@ const ProfileAbmeldung = () => {
       </Divider>
       <List size="large" bordered={false}>
         <ListSignoff onRemove={RemoveSignoffHandler} list={signoffList} />
-        <NewSignoff onAdd={AddSignoffHandler} list={signoffList} />
+        <NewSignoff onAdd={AddSignoffHandler} list={signoffList} text={text} />
       </List>
+      <SignoffModal
+        showModal={modal}
+        titel={text}
+        onCancel={cancelHandler}
+        onOk={cancelHandler}
+      />
     </div>
   );
 };
