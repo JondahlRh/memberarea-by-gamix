@@ -15,10 +15,10 @@ const App = () => {
           src="https://flat.fruchtlabor.com/assets/img/illustrations/flatlogoschriftwhite.png"
         />
       </Header>
+      <Divider orientation="left" style={{ borderColor: "#949494" }}>
+        MemberArea
+      </Divider>
       <Content>
-        <Divider orientation="left" style={{ borderColor: "#949494" }}>
-          MemberArea
-        </Divider>
         <Row align="center">
           <Col span={8}>
             <ProfileCard />
