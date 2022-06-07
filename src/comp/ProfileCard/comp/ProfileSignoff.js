@@ -13,7 +13,7 @@ const ProfileAbmeldung = () => {
   const [signoffList, setSignoffList] = useState(DUMMY_ARRAY);
   const [modal, setModal] = useState(false);
 
-  const AddSignoffHandler = () => {
+  const NewSignoffHandler = () => {
     setModal(true);
   };
 
@@ -32,6 +32,31 @@ const ProfileAbmeldung = () => {
     setModal(false);
   };
 
+  const onAddHandler = (newSignoff) => {
+    console.log(newSignoff);
+    setModal(false);
+    const dateStart = new Date(newSignoff.start._d).toLocaleString("de-DE", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+    const dateEnd = new Date(newSignoff.end._d).toLocaleString("de-DE", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+    setSignoffList((prevList) => {
+      return [
+        ...prevList,
+        {
+          id: Math.random(),
+          start: dateStart.toLocaleString("en-US", { month: "long" }),
+          end: dateEnd.toLocaleString("en-US", { month: "long" }),
+        },
+      ];
+    });
+  };
+
   const text =
     signoffList.length === 0 ? "Neue Abmeldung" : "Abmeldung hinzufügen";
 
@@ -42,13 +67,13 @@ const ProfileAbmeldung = () => {
       </Divider>
       <List size="large" bordered={false}>
         <ListSignoff onRemove={RemoveSignoffHandler} list={signoffList} />
-        <NewSignoff onAdd={AddSignoffHandler} list={signoffList} text={text} />
+        <NewSignoff onAdd={NewSignoffHandler} list={signoffList} text={text} />
       </List>
       <SignoffModal
         showModal={modal}
         titel={text}
         onCancel={cancelHandler}
-        onOk={cancelHandler}
+        onAdd={onAddHandler}
       />
     </div>
   );
