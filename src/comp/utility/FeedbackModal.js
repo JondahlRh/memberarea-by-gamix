@@ -7,14 +7,14 @@ const FeedbackModal = (props) => {
   const [entStars, setEntStars] = useState(5);
   const [entDesc, setEntDesc] = useState("");
 
-  const nameChangeHandler = (inpName) => {
-    setEntName(inpName);
+  const nameChangeHandler = (event) => {
+    setEntName(event);
   };
-  const starsChangeHandler = (inpStars) => {
-    setEntStars(inpStars);
+  const starsChangeHandler = (event) => {
+    setEntStars(event);
   };
-  const descChangeHandler = (inpDesc) => {
-    setEntDesc(inpDesc);
+  const descChangeHandler = (event) => {
+    setEntDesc(event.target.value);
   };
 
   const submitHandler = () => {
@@ -27,6 +27,7 @@ const FeedbackModal = (props) => {
       visible={props.showModal}
       onCancel={props.onCancel}
       footer={null}
+      destroyOnClose
     >
       <Form layout={"vertical"} name="theForm" onFinish={submitHandler}>
         <Form.Item label="Beschwerde an:">
@@ -36,7 +37,7 @@ const FeedbackModal = (props) => {
           <InputNumber
             max={5}
             min={0}
-            defaultValue={5}
+            value={entStars}
             onChange={starsChangeHandler}
           />
         </Form.Item>

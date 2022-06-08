@@ -11,6 +11,7 @@ const SignoffModal = (props) => {
       visible={props.showModal}
       onCancel={props.onCancel}
       footer={null}
+      destroyOnClose
     >
       <Form layout={"vertical"} name="theForm" onFinish={submitHandler}>
         <Form.Item label="Anfang der Abmeldung" name="start">
