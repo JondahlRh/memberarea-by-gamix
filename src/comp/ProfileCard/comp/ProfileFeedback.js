@@ -1,22 +1,39 @@
 import { Button, Divider, List } from "antd";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
 import Meta from "antd/lib/card/Meta";
+import { useState } from "react";
+import FeedbackModal from "../../utility/FeedbackModal";
+
+const DUMMY_DATA = [
+  { name: "BluuBerry | Kevin", stars: 1 },
+  { name: "LuQQi | Lucas", stars: 5 },
+];
 
 const ProfileFeedback = () => {
-  const data = [
-    { name: "BluuBerry | Kevin", stars: [1, 0, 0, 0, 0] },
-    { name: "LuQQi | Lucas", stars: [1, 1, 1, 1, 1] },
-    { name: "WattVolt | Corvin", stars: [1, 1, 1, 1, 1] },
-    { name: "Tjörck | Tjark", stars: [0, 0, 0, 0, 0] },
-    { name: "Dragzy | Marcel", stars: [1, 0, 0, 0, 0] },
-  ];
+  const [data, setData] = useState(DUMMY_DATA);
+  const [modal, setModal] = useState(false);
+
+  const NewSignoffHandler = () => {
+    setModal(true);
+  };
+
+  const cancelHandler = () => {
+    setModal(false);
+  };
+
+  const onAddHandler = (newFeedback) => {
+    setModal(false);
+    setData((prevData) => {
+      return [newFeedback, ...prevData];
+    });
+  };
 
   return (
     <div>
       <Divider orientation="left" style={{ borderColor: "#949494" }}>
         Feedback
       </Divider>
-      <Button>Neues Feedback</Button>
+      <Button onClick={NewSignoffHandler}>Neues Feedback</Button>
       <List
         header={<b>Abgegebenes Feedback</b>}
         dataSource={data}
@@ -24,16 +41,21 @@ const ProfileFeedback = () => {
           <List.Item>
             <Meta title={"Feedback an: " + item.name} />
             <div>
-              {item.stars.map((star) => {
-                return (
-                  (star === 0 && <StarOutlined key={Math.random()} />) || (
-                    <StarFilled key={Math.random()} />
-                  )
-                );
-              })}
+              {[...Array(item.stars)].map(() => (
+                <StarFilled key={Math.random()} />
+              ))}
+              {[...Array(5 - item.stars)].map(() => (
+                <StarOutlined key={Math.random()} />
+              ))}
             </div>
           </List.Item>
         )}
+      />
+      <FeedbackModal
+        showModal={modal}
+        titel="Neues Feedback"
+        onCancel={cancelHandler}
+        onAdd={onAddHandler}
       />
     </div>
   );
