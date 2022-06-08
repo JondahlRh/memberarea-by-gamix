@@ -1,7 +1,7 @@
 import "./App.less";
 
 import { Layout, Divider, Image, Row, Col } from "antd";
-import ProfileCard from "./comp/ProfileCard/ProfileCard";
+import Profile from "./comp/Profile";
 
 const { Header, Content } = Layout;
 
@@ -21,7 +21,7 @@ const App = () => {
       <Content>
         <Row align="center">
           <Col span={8}>
-            <ProfileCard />
+            <Profile />
           </Col>
         </Row>
       </Content>
