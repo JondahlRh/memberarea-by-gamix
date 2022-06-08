@@ -28,13 +28,13 @@ const ProfileCard = () => {
   return (
     <Card
       title={
-        <Row>
-          <Col span={4}>
+        <Row gutter={24}>
+          <Col>
             <a href="https://fruchtlabor.com/" target="_blank" rel="noreferrer">
               <ExperimentOutlined /> Website
             </a>
           </Col>
-          <Col span={4}>
+          <Col>
             <a href="https://fruchtlabor.net/" target="_blank" rel="noreferrer">
               <ExperimentOutlined /> Forum
             </a>
