@@ -2,7 +2,6 @@ import { Modal, Form, Input, DatePicker, Button } from "antd";
 
 const SignoffModal = (props) => {
   const submitHandler = (item) => {
-    console.log(item.start._d);
     props.onAdd(item);
   };
 

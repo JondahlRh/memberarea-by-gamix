@@ -33,7 +33,6 @@ const ProfileAbmeldung = () => {
   };
 
   const onAddHandler = (newSignoff) => {
-    console.log(newSignoff);
     setModal(false);
     const dateStart = new Date(newSignoff.start._d).toLocaleString("de-DE", {
       day: "2-digit",
