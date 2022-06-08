@@ -3,13 +3,14 @@ import { useState } from "react";
 import { Row, Col, Card } from "antd";
 import { SettingOutlined, ExperimentOutlined } from "@ant-design/icons";
 
-import SettingsModal from "../utility/SettinsModal";
+import SettingsModal from "../utility/SettingsModal";
 import ProfileHead from "./comp/ProfileHead";
 import ProfileSignoff from "./comp/ProfileSignoff";
 import ProfileFeedback from "./comp/ProfileFeedback";
 
 const ProfileCard = () => {
   const [modal, setModal] = useState(false);
+  const [username, setUsername] = useState("-");
 
   const settingsClickHandler = () => {
     setModal(true);
@@ -17,6 +18,11 @@ const ProfileCard = () => {
 
   const cancelHandler = () => {
     setModal(false);
+  };
+
+  const changeNameHandler = (newName) => {
+    setModal(false);
+    setUsername(newName);
   };
 
   return (
@@ -42,8 +48,9 @@ const ProfileCard = () => {
         showModal={modal}
         onCancel={cancelHandler}
         onOk={cancelHandler}
+        onNameChange={changeNameHandler}
       />
-      <ProfileHead />
+      <ProfileHead name={username} />
       <ProfileSignoff />
       <ProfileFeedback />
     </Card>
