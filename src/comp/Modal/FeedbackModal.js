@@ -27,13 +27,13 @@ const FeedbackModal = (props) => {
 
   return (
     <Form layout="vertical" onFinish={submitHandler}>
-      <Form.Item label="Anfang der Abmeldung">
+      <Form.Item label="Mitspieler">
         <Input onChange={nameChangeHandler} />
       </Form.Item>
-      <Form.Item label="Ende der Abmeldung">
+      <Form.Item label="Sterne">
         <InputNumber onChange={starsChangeHandler} />
       </Form.Item>
-      <Form.Item label="Beschreibung">
+      <Form.Item label="Bewertung">
         <Input.TextArea onChange={descChangeHandler} />
       </Form.Item>
       <Button htmlType="submit">Absenden</Button>
